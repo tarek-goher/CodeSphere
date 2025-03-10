@@ -1,0 +1,465 @@
+/* nav bar bc  */
+header {
+  position: relative;
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navbar,
+.nav-phone {
+  justify-content: space-between;
+  border-radius: 15px;
+  position: absolute;
+  top: 2rem;
+  left: 50%;
+  width: 100%;
+  transform: translateX(-50%);
+  background-color: #171b25;
+  backdrop-filter: blur(10px);
+  padding: 15px;
+  box-shadow: 0 4px 30px #0000001a;
+  z-index: 1000;
+  border: 0.5px solid #426dc5;
+}
+
+/* h1  teaxt  */
+.navbar h1,
+.nav-phone h1 {
+  font-size: 28px;
+  font-weight: 500;
+  background: linear-gradient(to right, #426dc5, #426dc5);
+  -webkit-background-clip: text; 
+  color: transparent;
+}
+
+.ul-nav {
+  list-style: none;
+
+}
+.active {
+  color: var(--blue--) !important;
+}
+.ul-nav li a,
+.ul-phone a {
+  text-decoration: none;
+  font-size: 14px;
+  color: #ffffffdb;
+  padding: 10px;
+  transition: 1s;
+}
+
+.ul-nav li a:hover,
+.ul-phone a:hover {
+  text-decoration: none;
+  color: var(--blue--) !important;
+  padding: 10px;
+}
+.ul-nav button {
+  padding: 10px;
+  font-size: 20px;
+  width: 10rem;
+  color: #000;
+  border: none;
+  background-color: #bad7f5;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+}
+.ul-nav button:hover,
+.ul-phone button:hover {
+  background: linear-gradient(to right, var(--blue--), #0000009f);
+  color: #fff;
+}
+/* ///////////////////////////////////////////////////////////////  end nav bc /////////////////////////////////////////////////////*/
+/* start nav phone  */
+.icon {
+  color: #426dc5;
+  font-size: 2.5rem !important;
+  display: none !important;
+}
+
+.nav-phone {
+  display: none;
+  justify-content: space-between;
+}
+
+.ul-phone {
+  display: none;
+  position: absolute;
+  top: 65px;
+  left:50%;
+  transform: translateX(-50%);
+  width: 100%;
+  padding: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  list-style: none;
+  border-radius: 10px;
+}
+
+.icon:hover + .ul-phone, .icon:active + .ul-phone ,
+.ul-phone:hover   {
+  display: block;
+}
+
+.ul-phone li {
+  padding: 10px;
+  text-align: start;
+  background-color: #171b25;
+}
+
+.ul-phone li a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: bold;
+}
+button {
+  padding: 10px;
+  font-size: 20px;
+  width: 10rem;
+  color: #000;
+  border: none;
+  background-color: #bad7f5;
+  border-radius: 5px;
+  cursor: pointer;
+  transition: 1s;
+  width: 100%;
+}
+
+@media (max-width: 850px) {
+  .nav-phone {
+    display: flex;
+  }
+  .nav-phone .icon {
+    display: block !important;
+  }
+  .navbar {
+    display: none;
+  }
+}
+
+
+
+
+
+
+
+
+/* أضف هذه الأنماط إلى ملف nav.css الخاص بك */
+
+/* تنسيق أيقونة المستخدم خارج الناف بار */
+.outside-user-icon {
+  position: absolute;
+  top: 3rem; /* يمكن تعديل هذه القيمة حسب موقع الناف بار */
+  right: 2%; /* يمكن تعديل هذه القيمة حسب عرض الناف بار */
+  z-index: 1001; /* لجعلها فوق الناف بار */
+  
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  color: white;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  box-shadow: 0 4px 15px rgba(79, 172, 254, 0.4);
+  transition: all 0.3s ease;
+  transform-style: preserve-3d;
+  overflow: hidden;
+}
+
+.outside-user-icon:hover {
+  transform: scale(1.1) translateY(-3px);
+  box-shadow: 0 6px 18px rgba(79, 172, 254, 0.5);
+}
+
+.outside-user-icon::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: 0.5s;
+}
+
+.outside-user-icon:hover::before {
+  left: 100%;
+}
+
+.outside-user-icon svg {
+  font-size: 24px;
+}
+
+/* تعديلات للتجاوب مع الشاشات المختلفة */
+@media (max-width: 850px) {
+  .outside-user-icon {
+    right: 2%; /* تعديل الموقع في الشاشات الصغيرة */
+  }
+}
+
+@media (max-width: 600px) {
+  .outside-user-icon {
+    right: 25%; /* تعديل الموقع في الشاشات الأصغر */
+    width: 35px;
+    height: 35px;
+  }
+  
+  .outside-user-icon svg {
+    font-size: 20px;
+  }
+}
+
+/* الحفاظ على الأنماط الأخرى المتعلقة بنافذة تسجيل الدخول */
+.login-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(8px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1002; /* أعلى من أيقونة المستخدم */
+  transition: all 0.3s ease;
+}
+
+.login-modal {
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px rgba(31, 38, 135, 0.2);
+  backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  padding: 35px;
+  width: 100%;
+  max-width: 400px;
+  position: relative;
+  animation: formAppear 1s ease-out;
+  overflow: hidden;
+}
+
+@keyframes formAppear {
+  0% {
+    transform: translateY(50px) scale(0.9);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0) scale(1);
+    opacity: 1;
+  }
+}
+
+.close-button {
+  position: absolute;
+  top: 0px;
+  left: 5px;
+  font-size: 30px !important;
+  background: none;
+  border: none;
+  font-size: 24px;
+  cursor: pointer;
+  color: white;
+  transition: color 0.3s;
+}
+
+.close-button:hover {
+  color: #00f2fe;
+  transform: scale(1.1) rotate(90deg);
+}
+
+.login-modal h2 {
+  text-align: center;
+  margin-bottom: 30px;
+  background: linear-gradient(120deg, #00f2fe, #4facfe, #00f2fe);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  animation: gradientMove 3s ease infinite, glowText 2s ease-in-out infinite;
+  text-shadow: 0 0 10px rgba(79, 172, 254, 0.3);
+  font-weight: 600;
+}
+
+@keyframes gradientMove {
+  0% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+  100% { background-position: 0% 50%; }
+}
+
+@keyframes glowText {
+  0%, 100% { filter: brightness(100%); }
+  50% { filter: brightness(150%); }
+}
+
+.form-group {
+  margin-bottom: 22px;
+  position: relative;
+  animation: fadeIn 0.5s ease forwards;
+}
+
+.form-group:nth-child(2) {
+  animation-delay: 0.1s;
+}
+
+.form-group:nth-child(3) {
+  animation-delay: 0.2s;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.form-group label {
+  display: block;
+  margin: 10px 0 5px;
+  color: #ffffff;
+  font-size: 14px;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 12px 15px;
+  margin-bottom: 15px;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  box-sizing: border-box;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus {
+  outline: none;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 15px rgba(79, 172, 254, 0.3);
+  border-color: #4facfe;
+}
+
+.error-message {
+  color: #ff6b6b;
+  margin-bottom: 15px;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+  background: rgba(255, 107, 107, 0.1);
+  border-left: 3px solid #ff6b6b;
+  font-size: 14px;
+  animation: shake 0.5s cubic-bezier(.36,.07,.19,.97) both;
+}
+
+@keyframes shake {
+  10%, 90% {
+    transform: translate3d(-1px, 0, 0);
+  }
+  20%, 80% {
+    transform: translate3d(2px, 0, 0);
+  }
+  30%, 50%, 70% {
+    transform: translate3d(-4px, 0, 0);
+  }
+  40%, 60% {
+    transform: translate3d(4px, 0, 0);
+  }
+}
+
+.login-button {
+  width: 100%;
+  padding: 12px;
+  background: linear-gradient(45deg, #4facfe, #00f2fe);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  font-size: 16px;
+  cursor: pointer;
+  transform-style: preserve-3d;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  margin-top: 2rem;
+}
+
+.login-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(120deg, transparent, rgba(255,255,255,0.3), transparent);
+  transition: 0.5s;
+}
+
+.login-button:hover::before {
+  left: 100%;
+}
+
+.login-button:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 5px 20px rgba(79, 172, 254, 0.4);
+}
+
+/* إضافة تأثيرات للحقول */
+.form-group input::placeholder {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+.form-group .input-icon {
+  position: absolute;
+  right: 15px;
+  top: 38px;
+  color: rgba(255, 255, 255, 0.5);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.form-group input:focus + .input-icon {
+  color: #00f2fe;
+  transform: scale(1.2);
+}
+
+/* تأثير التركيز على الحقول */
+.form-group input:focus {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+/* تأثيرات إضافية */
+.login-modal::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: -50%;
+  width: 200%;
+  height: 200%;
+  background: radial-gradient(rgba(79, 172, 254, 0.1), transparent 70%);
+  opacity: 0;
+  transform: rotate(20deg);
+  animation: gradientPulse 15s linear infinite;
+  pointer-events: none;
+}
+
+@keyframes gradientPulse {
+  0% {
+    opacity: 0;
+    transform: rotate(0deg);
+  }
+  50% {
+    opacity: 0.5;
+  }
+  100% {
+    opacity: 0;
+    transform: rotate(360deg);
+  }
+}
+.cor{
+  position: relative;
+}
