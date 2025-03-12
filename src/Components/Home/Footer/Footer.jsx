@@ -15,20 +15,30 @@ import {
   LocationOn,
   Phone,
   Email,
-  WhatsApp, // إضافة أيقونة الواتساب
+  WhatsApp,
   ArrowForward
 } from '@mui/icons-material';
-import { Link as RouterLink } from 'react-router-dom';  // استيراد Link من react-router-dom
+import { Link as RouterLink, useNavigate } from 'react-router-dom';
 
 const Footer = () => {
   const theme = useTheme();
   const isMobile = useMediaQuery(theme.breakpoints.down('sm'));
+  const navigate = useNavigate();
+
+  // وظيفة لتمرير الصفحة إلى الأعلى عند النقر على الرابط
+  const scrollToTop = (path) => {
+    navigate(path);
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  };
 
   const services = [
-    { name: "Website Development",  },
-    { name: "UI/UX Design",  },
-    { name: "Mobile App Development",  },
-    { name: "E-commerce Solutions",  },
+    { name: "Website Development" },
+    { name: "UI/UX Design" },
+    { name: "Mobile App Development" },
+    { name: "E-commerce Solutions" },
   ];
 
   const resources = [
@@ -115,7 +125,7 @@ const Footer = () => {
             </Box>
           </Grid>
 
-          {/* Services */}
+          {/* Services - جعل الروابط غير فعالة */}
           <Grid item xs={12} sm={6} md={3}>
             <Typography variant="h6" sx={{ mb: 1, fontWeight: 'bold' }}>
               Our Services
@@ -123,20 +133,16 @@ const Footer = () => {
             <DecorativeLine />
             {services.map((service, index) => (
               <Box key={index} sx={{ mb: 1 }}>
-                <RouterLink to={service.link} style={{ textDecoration: 'none' }}>
-                  <Box sx={{ 
+                <Box 
+                  sx={{ 
                     color: '#adb5bd', 
-                    '&:hover': { 
-                      color: '#2196F3',
-                      transition: 'color 0.3s'
-                    },
                     display: 'flex',
                     alignItems: 'center'
-                  }}>
-                    <ArrowForward sx={{ fontSize: 14, mr: 1 }} />
-                    <Typography variant="body2">{service.name}</Typography>
-                  </Box>
-                </RouterLink>
+                  }}
+                >
+                  <ArrowForward sx={{ fontSize: 14, mr: 1 }} />
+                  <Typography variant="body2">{service.name}</Typography>
+                </Box>
               </Box>
             ))}
           </Grid>
@@ -149,21 +155,22 @@ const Footer = () => {
             <DecorativeLine />
             {resources.map((resource, index) => (
               <Box key={index} sx={{ mb: 1 }}>
-                <RouterLink to={resource.link} style={{ textDecoration: 'none' }}>
-                  <Box sx={{ 
+                <Box 
+                  onClick={() => scrollToTop(resource.link)} 
+                  sx={{ 
                     color: '#adb5bd', 
                     '&:hover': { 
                       color: '#2196F3',
                       transition: 'color 0.3s',
-                      cursor:'pointer'
+                      cursor: 'pointer'
                     },
                     display: 'flex',
                     alignItems: 'center'
-                  }}>
-                    <ArrowForward sx={{ fontSize: 14, mr: 1 }} />
-                    <Typography variant="body2">{resource.name}</Typography>
-                  </Box>
-                </RouterLink>
+                  }}
+                >
+                  <ArrowForward sx={{ fontSize: 14, mr: 1 }} />
+                  <Typography variant="body2">{resource.name}</Typography>
+                </Box>
               </Box>
             ))}
           </Grid>
@@ -213,11 +220,21 @@ const Footer = () => {
           <Grid item xs={12} sm={6} sx={{ display: 'flex', justifyContent: isMobile ? 'center' : 'flex-end', mt: isMobile ? 1 : 0 }}>
             {company.slice(0, isMobile ? 2 : company.length).map((item, index) => (
               <React.Fragment key={index}>
-                <RouterLink to={item.link} style={{ textDecoration: 'none' }}>
-                  <Typography variant="body2" sx={{ color: '#adb5bd', '&:hover': { color: '#2196F3', transition: 'color 0.3s' }, fontSize: '0.75rem' }}>
-                    {item.name}
-                  </Typography>
-                </RouterLink>
+                <Typography 
+                  variant="body2" 
+                  onClick={() => scrollToTop(item.link)}
+                  sx={{ 
+                    color: '#adb5bd', 
+                    '&:hover': { 
+                      color: '#2196F3', 
+                      transition: 'color 0.3s',
+                      cursor: 'pointer'
+                    }, 
+                    fontSize: '0.75rem' 
+                  }}
+                >
+                  {item.name}
+                </Typography>
                 {index < (isMobile ? 1 : company.length - 1) && (
                   <Typography variant="body2" sx={{ mx: 1, color: '#adb5bd' }}>|</Typography>
                 )}

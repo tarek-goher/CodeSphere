@@ -201,12 +201,12 @@ const ServicesPage = () => {
     navigate('/Contact');
   };
   return (
-    <Box>
-      <Box sx={{pb:2 , background:'#fff'}}>
-        <Nav   dashbord={true}/>
+    <Box sx={{backgroundColor:'#10131d'}}>
+      <Box sx={{pb:2 , background:'#'}}>
+        <Nav   dashbord={false}/>
     </Box>
     <ThemeProvider theme={theme}>
-      <Box sx={{ bgcolor: 'background.default', py: 8 }}>
+      <Box sx={{ bgcolor: '#10131d', py: 8 }}>
         <Container>
           {/* Hero Section */}
           <motion.div
@@ -228,7 +228,7 @@ const ServicesPage = () => {
               >
                 Our Services
               </Typography>
-              <Typography variant="h6" color="textSecondary" sx={{ maxWidth: 800, mx: 'auto', mb: 3 }}>
+              <Typography variant="h6" color="#fff" sx={{ maxWidth: 800, mx: 'auto', mb: 3 }}>
                 We provide end-to-end digital solutions to help transform your business
                 with cutting-edge technology and exceptional user experiences.
               </Typography>
@@ -328,10 +328,12 @@ const ServicesPage = () => {
               animate={controls}
               variants={fadeInVariants}
             >
-              <Typography variant="h4" align="center" gutterBottom>
+              <Typography variant="h4" align="center" gutterBottom sx={{ background: 'linear-gradient(45deg, #3f51b5 30%, #f50057 90%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',}}>
                 Additional Services
               </Typography>
-              <Typography variant="body1" align="center" color="textSecondary" sx={{ mb: 5, maxWidth: 800, mx: 'auto' }}>
+              <Typography variant="body1" align="center" color="#fff" sx={{ mb: 5, maxWidth: 800, mx: 'auto' }}>
                 Explore our specialized services designed to complement and enhance your digital solutions.
               </Typography>
             </motion.div>
@@ -370,10 +372,12 @@ const ServicesPage = () => {
               animate={controls}
               variants={fadeInVariants}
             >
-              <Typography variant="h4" align="center" gutterBottom>
+              <Typography variant="h4" align="center" gutterBottom sx={{ background: 'linear-gradient(45deg, #3f51b5 30%, #f50057 90%)',
+                  WebkitBackgroundClip: 'text',
+                  WebkitTextFillColor: 'transparent',}}>
                 Our Technology Stack
               </Typography>
-              <Typography variant="body1" align="center" color="textSecondary" sx={{ mb: 5, maxWidth: 800, mx: 'auto' }}>
+              <Typography variant="body1" align="center" color="#fff" sx={{ mb: 5, maxWidth: 800, mx: 'auto' }}>
                 We leverage cutting-edge technologies to build robust, scalable, and maintainable solutions.
               </Typography>
             </motion.div>

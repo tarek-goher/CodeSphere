@@ -1,23 +1,40 @@
 import React, { useEffect } from "react";
-// import "./show.css";
+import "./show.css";
 import { Box, Container, Stack, Typography } from "@mui/material";
-import { Star } from '@mui/icons-material';
+import { Star, ArrowForward } from '@mui/icons-material';
 import { motion } from "framer-motion";
 
 export default function ShowT() {
   useEffect(() => {
-    // Initialize any animations or effects here
+    // إعداد مراقب التقاطع للعناصر المتحركة
     const observer = new IntersectionObserver((entries) => {
       entries.forEach(entry => {
         if (entry.isIntersecting) {
           entry.target.classList.add('animate');
         }
       });
-    }, { threshold: 0.1 });
+    }, { threshold: 0.1, rootMargin: "0px 0px -100px 0px" });
 
     document.querySelectorAll('.animated-element').forEach(element => {
       observer.observe(element);
     });
+
+    // إضافة تأثير الخلفية المتحركة
+    const particlesContainer = document.querySelector('.particles-container');
+    for (let i = 0; i < 50; i++) {
+      const particle = document.createElement('div');
+      particle.className = 'particle';
+      
+      // تعيين خصائص عشوائية لكل جزء
+      particle.style.left = `${Math.random() * 100}%`;
+      particle.style.top = `${Math.random() * 100}%`;
+      particle.style.width = `${Math.random() * 10 + 2}px`;
+      particle.style.height = particle.style.width;
+      particle.style.animationDuration = `${Math.random() * 10 + 10}s`;
+      particle.style.animationDelay = `${Math.random() * 5}s`;
+      
+      particlesContainer.appendChild(particle);
+    }
 
     return () => {
       observer.disconnect();
@@ -25,107 +42,74 @@ export default function ShowT() {
   }, []);
 
   return (
-    <Box sx={{ bgcolor: "#121212", minHeight: "100vh" }}>
+    <Box className="main-container">
+      <div className="particles-container"></div>
+      <div className="gradient-overlay"></div>
       <Container>
-        {/* Hero Section with Animated Background */}
+        {/* قسم الغلاف مع خلفية متحركة */}
         <Stack
           direction={"row"}
           alignItems={"center"}
           justifyContent={"space-between"}
-          sx={{ 
-            height: "100vh",
-            position: "relative",
-            overflow: "hidden",
-            "&::before": {
-              content: '""',
-              position: "absolute",
-              top: 0,
-              left: 0,
-              right: 0,
-              bottom: 0,
-              background: "linear-gradient(45deg, #121212 0%, #1a1a1a 100%)",
-              zIndex: -1
-            }
-          }}
-          className="all-div"
+          className="hero-section"
           flexWrap={"wrap"}
         >
           <motion.div
-            initial={{ opacity: 0, y: 50 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8 }}
+            initial={{ opacity: 0, x: -100 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.8, type: "spring", stiffness: 100 }}
             className="animated-element hero-content"
-            style={{ 
-              flex: 1, 
-              padding: "2rem",
-              maxWidth: "600px"
-            }}
           >
-            <Typography 
-              variant="h1" 
-              sx={{ 
-                fontSize: { xs: "1.8rem", sm: "2.2rem", md: "2.8rem" }, // Smaller title size
-                fontWeight: 700,
-                background: "linear-gradient(90deg, #3a7aff, #92d0e0)",
-                backgroundClip: "text",
-                textFillColor: "transparent",
-                WebkitBackgroundClip: "text",
-                WebkitTextFillColor: "transparent",
-                mb: 3
-              }}
-            >
-              Elevate Your Design Experience
-            </Typography>
+            <div className="glowing-text">
+              <Typography 
+                variant="h1" 
+                className="hero-title"
+              >
+                Elevate Your Design Experience
+              </Typography>
+            </div>
+            <div className="blinking-cursor"></div>
             <Typography 
               variant="body1" 
-              sx={{ 
-                color: "#fff",
-                fontSize: { xs: "1rem", md: "1.2rem" },
-                lineHeight: 1.8,
-                mb: 4,
-                opacity: 0.8
-              }}
+              className="hero-quote"
             >
               "The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!"
             </Typography>
             <motion.button 
-              whileHover={{ scale: 1.05 }}
+              whileHover={{ scale: 1.05, boxShadow: "0 0 25px rgba(58, 122, 255, 0.6)" }}
               whileTap={{ scale: 0.95 }}
-              style={{
-                background: "linear-gradient(90deg, #3a7aff, #92d0e0)",
-                border: "none",
-                padding: "15px 30px",
-                borderRadius: "50px",
-                color: "#fff",
-                fontSize: "1rem",
-                fontWeight: 600,
-                cursor: "pointer",
-                boxShadow: "0 10px 20px rgba(58, 122, 255, 0.3)"
-              }}
+              className="cta-button"
             >
               Get Started
+              <ArrowForward className="arrow-icon" />
             </motion.button>
           </motion.div>
 
           <motion.div 
-            initial={{ opacity: 0, scale: 0.8 }}
+            initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            style={{ 
-              flex: 1,
-              display: "flex",
-              justifyContent: "center",
-              alignItems: "center"
-            }}
+            transition={{ duration: 1, delay: 0.3, type: "spring" }}
+            className="hero-visual"
           >
+            <div className="cube-container">
+              <div className="cube">
+                <div className="face front"></div>
+                <div className="face back"></div>
+                <div className="face right"></div>
+                <div className="face left"></div>
+                <div className="face top"></div>
+                <div className="face bottom"></div>
+              </div>
+            </div>
             <div className="animated-shapes">
               {[...Array(5)].map((_, i) => (
                 <motion.div
                   key={i}
-                  className="floating-shape"
+                  className={`floating-shape shape-${i}`}
                   animate={{
                     y: [0, -20, 0],
-                    rotate: [0, i % 2 === 0 ? 10 : -10, 0]
+                    rotate: [0, i % 2 === 0 ? 15 : -15, 0],
+                    scale: [1, 1.1, 1]
                   }}
                   transition={{
                     duration: 3 + i,
@@ -133,136 +117,73 @@ export default function ShowT() {
                     ease: "easeInOut",
                     delay: i * 0.2
                   }}
-                  style={{
-                    width: 50 + i * 10,
-                    height: 50 + i * 10,
-                    borderRadius: i % 2 === 0 ? "30%" : "50%",
-                    background: `linear-gradient(135deg, ${i % 2 === 0 ? "#3a7aff" : "#92d0e0"}, ${i % 2 === 0 ? "#92d0e0" : "#ffb830"})`,
-                    position: "absolute",
-                    opacity: 0.7 - i * 0.1,
-                    filter: "blur(2px)",
-                    transform: `translate(${i * 30 - 60}px, ${i * 20 - 40}px)`
-                  }}
                 />
               ))}
             </div>
           </motion.div>
         </Stack>
 
-        {/* Stats Section with Animation */}
+        {/* قسم الإحصائيات مع حركات */}
         <motion.div
-          initial={{ opacity: 0, y: 30 }}
+          initial={{ opacity: 0, y: 50 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+          viewport={{ once: true, margin: "-100px" }}
+          className="stats-container"
         >
           <Stack
             direction={{ xs: "column", sm: "column", md: "row" }}
             alignItems={{ xs: "center", sm: "center", md: "center" }}
             justifyContent={{ xs: "center", sm: "center", md: "space-between" }}
-            gap={{ xs: "30px", sm: "40px", md: "50px" }}
-            className="bgcolor animated-element"
-            sx={{
-              padding: { xs: "20px", sm: "25px", md: "30px" },
-              width: { xs: "90%", sm: "80%", md: "auto" },
-              margin: "0 auto 100px auto",
-              background: "rgba(26, 32, 44, 0.8)",
-              backdropFilter: "blur(10px)",
-              borderRadius: "20px",
-              border: "1px solid rgba(58, 122, 255, 0.2)",
-              boxShadow: "0 20px 40px rgba(0, 0, 0, 0.2)",
-              transform: "translateY(-50px)"
-            }}
+            className="stats-section animated-element"
           >
-            <Box className='num1 stat-box' sx={{ position: "relative", padding: "20px" }}>
+            <Box className='stat-box'>
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 100, delay: 0.1 }}
+                transition={{ type: "spring", stiffness: 150, delay: 0.1 }}
                 viewport={{ once: true }}
+                className="stat-inner"
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" },
-                    mb: 1,
-                    fontWeight: 500,
-                    color: "#3a7aff",
-                    textAlign: { xs: "center", md: "left" }
-                  }}
-                  variant="body2"
-                >
-                  1500+
+                <div className="stat-icon templates-icon"></div>
+                <Typography className="stat-number" variant="body2">
+                  50+
                 </Typography>
-                <Typography 
-                  variant="p" 
-                  sx={{ 
-                    color: "#fff",
-                    textAlign: { xs: "center", md: "left" },
-                    display: "block"
-                  }}
-                >
+                <Typography className="stat-label" variant="p">
                   Templates Available
                 </Typography>
               </motion.div>
             </Box>
-            <Box className='num2 stat-box' sx={{ position: "relative", padding: "20px" }}>
+            <Box className='stat-box'>
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 100, delay: 0.2 }}
+                transition={{ type: "spring", stiffness: 150, delay: 0.2 }}
                 viewport={{ once: true }}
+                className="stat-inner"
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" },
-                    mb: 1,
-                    fontWeight: 500,
-                    color: "#3a7aff",
-                    textAlign: { xs: "center", md: "left" }
-                  }}
-                  variant="body2"
-                >
-                  2K+
+                <div className="stat-icon customers-icon"></div>
+                <Typography className="stat-number" variant="body2">
+                  50+
                 </Typography>
-                <Typography 
-                  variant="p" 
-                  sx={{ 
-                    color: "#fff",
-                    textAlign: { xs: "center", md: "left" },
-                    display: "block"
-                  }}
-                >
+                <Typography className="stat-label" variant="p">
                   Happy Customers
                 </Typography>
               </motion.div>
             </Box>
-            <Box className='num3 stat-box' sx={{ position: "relative", padding: "20px" }}>
+            <Box className='stat-box'>
               <motion.div
                 initial={{ opacity: 0, scale: 0 }}
                 whileInView={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", stiffness: 100, delay: 0.3 }}
+                transition={{ type: "spring", stiffness: 150, delay: 0.3 }}
                 viewport={{ once: true }}
+                className="stat-inner"
               >
-                <Typography
-                  sx={{
-                    fontSize: { xs: "1.5rem", sm: "1.8rem", md: "2rem" },
-                    mb: 1,
-                    fontWeight: 500,
-                    color: "#3a7aff",
-                    textAlign: { xs: "center", md: "left" }
-                  }}
-                  variant="body2"
-                >
+                <div className="stat-icon support-icon"></div>
+                <Typography className="stat-number" variant="body2">
                   24/7
                 </Typography>
-                <Typography 
-                  variant="p" 
-                  sx={{ 
-                    color: "#fff",
-                    textAlign: { xs: "center", md: "left" },
-                    display: "block"
-                  }}
-                >
+                <Typography className="stat-label" variant="p">
                   Support Available
                 </Typography>
               </motion.div>
@@ -270,30 +191,15 @@ export default function ShowT() {
           </Stack>
         </motion.div>
 
-        {/* Testimonial Section with Animation */}
+        {/* قسم شهادات العملاء مع تأثيرات حركية */}
         <motion.div
-          initial={{ opacity: 0, y: 50 }}
+          initial={{ opacity: 0, y: 70 }}
           whileInView={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          viewport={{ once: true }}
+          transition={{ duration: 0.8 }}
+          viewport={{ once: true, margin: "-100px" }}
         >
-          <Box sx={{
-              display: "flex",
-              flexDirection: "column",
-              alignItems: "center",
-              justifyContent: "center",
-              textAlign: "center",
-              maxWidth: { xs: "90%", sm: "80%", md: "70%" },
-              margin: "0 auto",
-              padding: "20px"
-          }} className="animated-element" >
-              <Typography variant="h3" sx={{
-                  fontSize: { xs: "1.5rem", sm: "2rem", md: "2.5rem" },
-                  mb: 2,
-                  fontWeight: 600,
-                  color: "#3a7aff",
-                  textAlign: "center"
-              }}> 
+          <Box className="testimonial-section animated-element">
+              <Typography variant="h3" className="section-title"> 
                   What Our Customers Say
               </Typography>
               
@@ -302,50 +208,57 @@ export default function ShowT() {
                 whileInView={{ scale: 1, opacity: 1 }}
                 transition={{ duration: 0.4, delay: 0.2 }}
                 viewport={{ once: true }}
+                className="stars-container"
               >
-                <Box sx={{ 
-                    display: 'flex', 
-                    gap: "15px", 
-                    justifyContent: "center", 
-                    mb: 3 
-                }}>
-                    {[...Array(5)].map((_, i) => (
-                      <motion.div 
-                        key={i}
-                        animate={{ rotate: [0, 5, 0, -5, 0] }}
-                        transition={{ 
-                          duration: 1.5, 
-                          repeat: Infinity, 
-                          delay: i * 0.1,
-                          repeatDelay: 2
-                        }}
-                      >
-                        <Star sx={{ 
-                          color: 'gold', 
-                          fontSize: { xs: '1.5rem', md: '2rem' },
-                          filter: "drop-shadow(0 0 5px rgba(255, 215, 0, 0.7))"
-                        }} />
-                      </motion.div>
-                    ))}
-                </Box>
+                {[...Array(5)].map((_, i) => (
+                  <motion.div 
+                    key={i}
+                    animate={{ 
+                      rotate: [0, 10, 0, -10, 0],
+                      scale: [1, 1.2, 1, 1.2, 1]
+                    }}
+                    transition={{ 
+                      duration: 2, 
+                      repeat: Infinity, 
+                      delay: i * 0.15,
+                      repeatDelay: 1
+                    }}
+                    className="star-wrapper"
+                  >
+                    <Star className="star-icon" />
+                  </motion.div>
+                ))}
               </motion.div>
               
               <motion.div
-                initial={{ y: 20, opacity: 0 }}
+                initial={{ y: 30, opacity: 0 }}
                 whileInView={{ y: 0, opacity: 1 }}
-                transition={{ duration: 0.5, delay: 0.3 }}
+                transition={{ duration: 0.7, delay: 0.4 }}
                 viewport={{ once: true }}
+                className="testimonial-wrapper"
               >
-                <Typography variant="body1" sx={{ 
-                    color: "#fff",
-                    fontSize: { xs: "1rem", sm:"1.2rem", md: "1.4rem" }, 
-                    lineHeight: 1.6,
-                    fontStyle: "italic",
-                    maxWidth: "85%",
-                    margin: "0 auto"
-                }}>
-                    "The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!"
-                </Typography>
+                <div className="testimonial-card">
+                  <div className="quote-mark">"</div>
+                  <Typography variant="body1" className="testimonial-text">
+                    The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!
+                  </Typography>
+                 <Stack direction={'row'}  justifyContent={'space-around'}  flexWrap={'wrap'} >
+                 <div className="testimonial-author">
+                    <div className="author-avatar"></div>
+                    <div className="author-info">
+                      <Typography className="author-name">Tarek Abdelkarim</Typography>
+                      <Typography className="author-title">Product Manager</Typography>
+                    </div>
+                  </div>
+                  <div className="testimonial-author">
+                    <div className="author-avatar"></div>
+                    <div className="author-info">
+                      <Typography className="author-name">Sarah</Typography>
+                      <Typography className="author-title">Product Manager</Typography>
+                    </div>
+                  </div>
+                 </Stack>
+                </div>
               </motion.div>
           </Box>
         </motion.div>

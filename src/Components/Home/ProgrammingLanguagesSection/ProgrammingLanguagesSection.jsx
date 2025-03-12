@@ -465,18 +465,24 @@ const ProgrammingLanguagesSection = () => {
               CUTTING-EDGE DEVELOPMENT
             </Typography>
             
-            <Typography 
-              variant="h2" 
-              component="h1" 
-              sx={{ 
-                fontWeight: 800, 
-                mb: 2,
-                background: `linear-gradient(90deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
-                WebkitBackgroundClip: 'text',
-                WebkitTextFillColor: 'transparent',
-                display: 'inline-block'
-              }}
-            >
+            <Typography
+      variant="h2"
+      component="h1"
+      sx={{
+        fontWeight: 800,
+        mb: 2,
+        background: `linear-gradient(90deg, ${theme.palette.primary.main} 0%, ${theme.palette.secondary.main} 100%)`,
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        display: 'inline-block',
+        fontSize: {
+          xs: '1.8rem',  
+          sm: '2rem',   
+          md: '3rem',    
+          lg: '4rem',   
+        },
+      }}
+    >
               Our Technology Stack
             </Typography>
             
