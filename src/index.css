@@ -1,40 +1,48 @@
-
-@import url("https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap");
-
+@import "https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100..900;1,100..900&display=swap";
 
 * {
-  padding: 0;
-  margin: 0;
+padding:0;
+margin:0
 }
+
 body {
-  font-family: "Roboto", serif;
-  background-color: #10131D;
-  text-transform: capitalize;
-  scroll-behavior: smooth;
-  /* height: 1000vh; */
-
+font-family:"Roboto",serif;
+text-transform:capitalize;
+scroll-behavior:smooth
 }
 
-:root{
-  --blue--:#2A6DCE;
+:root {
+--bg-color:#fff;
+--font-color:#181A1C;
+--hovered:#181A1C;
+--accent:#20359F;
+--light-bg:#EDF4FF;
+--baby-blue:#2A6DCE;
+--gradient-bg:linear-gradient(to right,#2E3192,#1EADD2);
+background-color:#f8f8f8
 }
 
 html {
-  height: 100%;
+height:100%
 }
 
+body {
+font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Oxygen,Ubuntu,Cantarell,'Open Sans','Helvetica Neue',sans-serif
+}
 
-.flex{
-  display:flex;
-  align-items:center;
+.flex {
+display:flex;
+align-items:center
 }
-.border{
-  border: 3px solid red;
+
+.border {
+border:3px solid red
 }
-.line{
-padding: 5rem;
-   
+
+.line {
+padding:5rem
 }
-br{
-  background-color: #000;
+
+br {
+background-color:#000
 }
