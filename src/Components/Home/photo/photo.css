@@ -1,155 +1,152 @@
-/* SliderWithBorderRadius.css */
-.photos{
-    width: 100% !important;
-    background-color: aliceblue !important;
-}
-
-.slider-container {
-    position: relative;
-    width: 80%;         /* تقليل العرض إلى 80% بدلاً من 100% */
-    height: 70vh;       /* تقليل الارتفاع إلى 70% من ارتفاع الشاشة */
-    background-color: #f8f9fa;
-    overflow: hidden;
-    margin: 50px auto;  /* توسيط العنصر في الصفحة مع هامش علوي وسفلي */
-    border-radius: 16px; /* إضافة border-radius للحاوية الرئيسية */
-    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1); /* إضافة ظل خفيف للتأثير البصري */
+.photos {
+  width:100%!important;
+  background-color:#f0f8ff!important
+  }
+  
+  .slider-container {
+  position:relative;
+  width:80%;
+  height:70vh;
+  background-color:#f8f9fa;
+  overflow:hidden;
+  margin:50px auto;
+  border-radius:16px;
+  box-shadow:0 4px 20px #0000001a
   }
   
   .slider-wrapper {
-    width: 100%;
-    height: 100%;
-    display: flex;
-    transition: transform 700ms ease-in-out;
+  width:100%;
+  height:100%;
+  display:flex;
+  transition:transform 700ms ease-in-out
   }
   
   .slide {
-    width: 100%;
-    height: 100%;
-    flex-shrink: 0;
+  width:100%;
+  height:100%;
+  flex-shrink:0
   }
   
   .slide-inner {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    border-radius: 16px; /* إضافة border-radius للشريحة الداخلية */
-    overflow: hidden;    /* لضمان عدم خروج الصورة عن حدود border-radius */
+  position:relative;
+  width:100%;
+  height:100%;
+  border-radius:16px;
+  overflow:hidden
   }
   
   .slide-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    border-radius: 16px; /* إضافة border-radius للصورة */
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px
   }
   
   .content-overlay {
-    position: absolute;
-    inset: 0;
-    background-color: rgba(0, 0, 0, 0.4);
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    padding: 0 16px;
-    border-radius: 16px; /* إضافة border-radius للطبقة العلوية */
+  position:absolute;
+  inset:0;
+  background-color:#0006;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  padding:0 16px;
+  border-radius:16px
   }
   
   .content-box {
-    background-color: rgba(255, 255, 255, 0.507);
-    padding: 20px 28px;
-    border-radius: 12px; /* إضافة border-radius لصندوق المحتوى */
-    max-width: 600px;
-    text-align: center;
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  background-color:#ffffff81;
+  padding:20px 28px;
+  border-radius:12px;
+  max-width:600px;
+  text-align:center;
+  box-shadow:0 4px 12px #0000001a
   }
   
   .slide-title {
-    font-size: 28px;
-    font-weight: 700;
-    margin-bottom: 8px;
-    color: #1a202c;
+  font-size:28px;
+  font-weight:700;
+  margin-bottom:8px;
+  color:#1a202c
   }
   
   .slide-description {
-    font-size: 16px;
-    color: #4a5568;
+  font-size:16px;
+  color:#4a5568
   }
   
   .nav-button {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    background-color: rgba(255, 255, 255, 0.8);
-    padding: 8px;
-    border-radius: 50%;
-    border: none;
-    cursor: pointer;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    transition: background-color 300ms;
-    color: #2d3748;
-    z-index: 10;
+  position:absolute;
+  top:50%;
+  transform:translateY(-50%);
+  background-color:#fffc;
+  padding:8px;
+  border-radius:50%;
+  border:none;
+  cursor:pointer;
+  box-shadow:0 4px 6px #0000001a;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:background-color 300ms;
+  color:#2d3748;
+  z-index:10
   }
   
   .nav-button:hover {
-    background-color: rgba(255, 255, 255, 1);
+  background-color:#ffff
   }
   
   .prev-button {
-    left: 16px;
+  left:16px
   }
   
   .next-button {
-    right: 16px;
+  right:16px
   }
   
   .slider-indicators {
-    position: absolute;
-    bottom: 20px;
-    left: 50%;
-    transform: translateX(-50%);
-    display: flex;
-    gap: 8px;
-    z-index: 10;
+  position:absolute;
+  bottom:20px;
+  left:50%;
+  transform:translateX(-50%);
+  display:flex;
+  gap:8px;
+  z-index:10
   }
   
   .indicator-dot {
-    width: 10px;
-    height: 10px;
-    border-radius: 50%;
-    background-color: rgba(255, 255, 255, 0.5);
-    border: none;
-    padding: 0;
-    cursor: pointer;
-    transition: all 300ms;
+  width:10px;
+  height:10px;
+  border-radius:50%;
+  background-color:#ffffff80;
+  border:none;
+  padding:0;
+  cursor:pointer;
+  transition:all 300ms
   }
   
   .indicator-dot.active {
-    background-color: white;
-    transform: scale(1.25);
+  background-color:#fff;
+  transform:scale(1.25)
   }
   
-  /* Responsive adjustments */
   @media (max-width: 768px) {
-    .slider-container {
-      width: 90%;    /* على الشاشات الصغيرة، زيادة العرض قليلاً ليكون 90% */
-      height: 60vh;  /* تقليل الارتفاع أكثر على الشاشات الصغيرة */
-    }
-    
-    .content-box {
-      padding: 16px 20px;
-      max-width: 90%;
-    }
-    
-    .slide-title {
-      font-size: 22px;
-    }
-    
-    .slide-description {
-      font-size: 14px;
-    }
+  .slider-container {
+  width:90%;
+  height:60vh
   }
-
+  
+  .content-box {
+  padding:16px 20px;
+  max-width:90%
+  }
+  
+  .slide-title {
+  font-size:22px
+  }
+  
+  .slide-description {
+  font-size:14px
+  }
+  }

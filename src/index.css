@@ -9,7 +9,7 @@ body {
 font-family:"Roboto",serif;
 text-transform:capitalize;
 scroll-behavior:smooth;
-background-color: var(--bg-color) !important;
+background-color:var(--bg-color)!important
 }
 
 :root {
