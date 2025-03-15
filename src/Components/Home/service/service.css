@@ -4,7 +4,7 @@
     position: relative;
     overflow: hidden;
   }
-  
+
   .services-section::before {
     content: "";
     position: absolute;

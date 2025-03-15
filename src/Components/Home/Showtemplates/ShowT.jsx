@@ -258,7 +258,7 @@ export default function ShowT() {
                 <Typography variant="body1" className="testimonial-text">
                   The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!
                 </Typography>
-                <Stack 
+                {/* <Stack 
                   direction={{ xs: "column", sm: "row" }} 
                   justifyContent="space-around" 
                   flexWrap="wrap"
@@ -276,7 +276,7 @@ export default function ShowT() {
                       </div>
                     </div>
                   ))}
-                </Stack>
+                </Stack> */}
               </div>
             </motion.div>
           </Box>

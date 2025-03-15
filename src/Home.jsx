@@ -129,7 +129,7 @@ function Home() {
     <>
       <Box
         className="app-container"
-        sx={{ display: "flex", flexDirection: "column", gap: 0}}
+        sx={{ display: "flex", flexDirection: "column",}}
       >
           <Nav />
 

@@ -20,7 +20,7 @@ export default function About() {
             position: 'absolute',
             width: '33%',
             height: '85%',
-            backgroundColor: '#131F2F',
+            backgroundColor: '#fff',
             right: 60,
             top: 20,
             zIndex: 0,

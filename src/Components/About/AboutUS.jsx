@@ -83,7 +83,7 @@ const AboutUs = () => {
   ];
 
   return (
-    <Box>
+    <Box> 
        <Box sx={{pb:0 , background:'initial'}}>
            <Nav/>
            </Box>

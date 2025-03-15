@@ -1,79 +1,158 @@
-import  { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
 import './nav.css';
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
-
+  const [isHidden, setIsHidden] = useState(false);
+  const [lastScrollY, setLastScrollY] = useState(0);
+  
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
   };
 
-  return (
-    <div className='Nav-Cont'>
-    <nav className="navbar">
-      <div className="navbar-container">
-        <div className="logo">
-          <a href="/" className="logo-link">
-            <span className="logo-text">Codewave</span>
-          </a>
-        </div>
-        
-        <div className={`menu-icon ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
-          <span></span>
-          <span></span>
-          <span></span>
-        </div>
+  useEffect(() => {
+    const isColorDark = (color) => {
+      let r, g, b;
+      
+      if (color.startsWith('rgb')) {
+        const rgbValues = color.match(/\d+/g);
+        if (rgbValues && rgbValues.length >= 3) {
+          r = parseInt(rgbValues[0]);
+          g = parseInt(rgbValues[1]);
+          b = parseInt(rgbValues[2]);
+        }
+      } else {
+        r = 128;
+        g = 128;
+        b = 128;
+      }
 
-        <div className={`nav-content ${menuOpen ? 'active' : ''}`}>
-          <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
-            <li className="nav-item dropdown">
-              <a href="#platform" className="nav-link">
-                Platform
-                <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
-                  <path d="M7 10l5 5 5-5H7z"/>
-                </svg>
-              </a>
-            </li>
-            <li className="nav-item dropdown">
-              <a href="#solutions" className="nav-link">
-                Solutions
-                <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
-                  <path d="M7 10l5 5 5-5H7z"/>
-                </svg>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#integrations" className="nav-link">Integrations</a>
-            </li>
-            <li className="nav-item dropdown">
-              <a href="#start-building" className="nav-link">
-                Start Building
-                <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
-                  <path d="M7 10l5 5 5-5H7z"/>
-                </svg>
-              </a>
-            </li>
-            <li className="nav-item">
-              <a href="#docs" className="nav-link">Docs</a>
-            </li>
-            <li className="nav-item">
-              <a href="#pricing" className="nav-link">Pricing</a>
-            </li>
-          </ul>
+      const brightness = (r * 0.299 + g * 0.587 + b * 0.114);
+
+      return brightness < 128;
+    };
+
+    const handleScroll = () => {
+      const currentScrollY = window.scrollY;
+
+      if (currentScrollY > lastScrollY && currentScrollY > 100) {
+        setIsHidden(true);
+      } else {
+        setIsHidden(false);
+      }
+      setLastScrollY(currentScrollY);
+      updateNavbarColor(currentScrollY);
+    };
+    const updateNavbarColor = (scrollTop) => {
+      const sections = document.querySelectorAll('section');
+      const navbarHeight = document.querySelector('.Nav-Cont')?.offsetHeight || 0;
+      const navContainer = document.querySelector('.Nav-Cont');
+      
+      for (let i = 0; i < sections.length; i++) {
+        const section = sections[i];
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollTop >= sectionTop - navbarHeight && scrollTop < sectionTop + sectionHeight) {
+          const sectionBgColor = window.getComputedStyle(section).backgroundColor;
           
-          <div className="nav-right">
-            <div className="search-icon">
-              <svg width="20" height="20" viewBox="0 0 24 24">
-                <path d="M15.5 14h-.79l-.28-.27C15.41 12.59 16 11.11 16 9.5 16 5.91 13.09 3 9.5 3S3 5.91 3 9.5 5.91 16 9.5 16c1.61 0 3.09-.59 4.23-1.57l.27.28v.79l5 4.99L20.49 19l-4.99-5zm-6 0C7.01 14 5 11.99 5 9.5S7.01 5 9.5 5 14 7.01 14 9.5 11.99 14 9.5 14z"/>
-              </svg>
-            </div>
-            <a href="#contact" className="nav-link">Contact</a>
-            <a href="#login" className="nav-link">Log in</a>
-            <a href="#signup" className="signup-btn">Sign up</a>
+          document.documentElement.style.setProperty('--nav-bg', sectionBgColor);
+          
+          const isDarkBackground = isColorDark(sectionBgColor);
+          
+          if (isDarkBackground) {
+            navContainer.classList.add('dark-background');
+          } else {
+            navContainer.classList.remove('dark-background');
+          }
+          
+          break; 
+        }
+      }
+    };
+
+    window.addEventListener('scroll', handleScroll, { passive: true });
+    const initializeNavbarColor = () => {
+      const sections = document.querySelectorAll('section');
+      const navContainer = document.querySelector('.Nav-Cont');
+      if (sections.length > 0) {
+        const firstSectionColor = window.getComputedStyle(sections[0]).backgroundColor;
+        document.documentElement.style.setProperty('--nav-bg', firstSectionColor);
+        const isDarkBackground = isColorDark(firstSectionColor);
+        if (isDarkBackground) {
+          navContainer?.classList.add('dark-background');
+        } else {
+          navContainer?.classList.remove('dark-background');
+        }
+      }
+    };
+
+    window.addEventListener('load', initializeNavbarColor);
+    
+    initializeNavbarColor();
+    return () => {
+      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('load', initializeNavbarColor);
+    };
+  }, [lastScrollY]); 
+      
+  return (
+    <div className={`Nav-Cont ${isHidden ? 'hidden' : ''}`}>
+      <nav className="navbar">
+        <div className="navbar-container">
+          <div className="logo">
+            <Link to="/" className="logo-link">
+              <span className="logo-text">CodeSphere</span>
+            </Link>
+          </div>
+          
+          <div className={`menu-icon ${menuOpen ? 'active' : ''}`} onClick={toggleMenu}>
+            <span></span>
+            <span></span>
+            <span></span>
+          </div>
+  
+          <div className={`nav-content ${menuOpen ? 'active' : ''}`}>
+            <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
+              <li className="nav-item dropdown">
+                <Link to="/" className="nav-link  active">
+                  Home
+                  <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                  </svg>
+                </Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link to="/Service" className="nav-link">
+                  Services
+                  <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                  </svg>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Template" className="nav-link">Templates</Link>
+              </li>
+              <li className="nav-item dropdown">
+                <Link to="/AboutUs" className="nav-link">
+                  About Us
+                  <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
+                    <path d="M7 10l5 5 5-5H7z"/>
+                  </svg>
+                </Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/FAQ" className="nav-link">FAQ</Link>
+              </li>
+              <li className="nav-item">
+                <Link to="/Contact" className="nav-link">Contact Us</Link>
+              </li>
+              <Link to="/signup" className="signup-btn">Sign up</Link>
+            </ul>
           </div>
         </div>
-      </div>
-    </nav>
+      </nav>
     </div>
   );
 }

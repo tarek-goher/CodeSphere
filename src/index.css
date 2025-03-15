@@ -8,7 +8,8 @@ margin:0
 body {
 font-family:"Roboto",serif;
 text-transform:capitalize;
-scroll-behavior:smooth
+scroll-behavior:smooth;
+background-color: var(--bg-color) !important;
 }
 
 :root {

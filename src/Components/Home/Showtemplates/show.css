@@ -523,6 +523,41 @@
 }
 
 @media screen and (max-width: 768px) {
+  
+
+
+
+  .cube-container,
+  .animated-shapes,
+  .floating-shape,
+  .cube,
+  .face {
+    display: none !important;
+  }
+  
+  /* تعديل تخطيط قسم Hero للشاشات الصغيرة */
+  .hero-visual {
+    min-height: auto;
+    margin-bottom: 1rem;
+  }
+  
+  /* تحسين المظهر العام للشاشات الصغيرة */
+  .hero-content {
+    text-align: center;
+    padding: 1rem;
+  }
+  
+  .cta-button {
+    margin: 0 auto;
+  }
+
+
+
+
+
+
+
+
   .hero-title {
     font-size: 2rem !important;
   }

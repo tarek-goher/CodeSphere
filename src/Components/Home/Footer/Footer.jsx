@@ -67,7 +67,7 @@ const Footer = () => {
 
   // Social icons with custom styling for no spacing
   const socialIcons = [
-    { icon: <Facebook />, color: '#', label: 'facebook', link: 'https://www.facebook.com' },
+    { icon: <Facebook />, color: '#', label: 'facebook', link: 'https://www.facebook.com/profile.php?id=100064817331076' },
     { icon: <Instagram />, color: '#', label: 'instagram', link: 'https://www.instagram.com'},
     { icon: <WhatsApp />, color: '#', label: 'whatsapp', link: 'https://wa.me/yourphonenumber'},
     { icon: <Email />, color: '#', label: 'email', link: 'mailto:digitalapplica@gmail.com' }, 
