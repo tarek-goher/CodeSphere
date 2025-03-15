@@ -441,13 +441,13 @@ const ProgrammingLanguagesSection = () => {
           {/* Theme toggle */}
           <Box sx={{ display: 'flex', justifyContent: 'flex-end', mb: 3 }}>
             <Stack direction="row" spacing={1} alignItems="center">
-              <Typography variant="body2">Light</Typography>
+              <Typography variant="body2"  sx={{color:theme.palette.text.secondary}}>Light</Typography>
               <Switch
                 checked={darkMode}
                 onChange={handleThemeToggle}
                 color="primary"
               />
-              <Typography variant="body2">Dark</Typography>
+              <Typography variant="body2" sx={{color:theme.palette.text.secondary}}>Dark</Typography>
             </Stack>
           </Box>
 

@@ -14,14 +14,15 @@ const ServicesSection = () => {
       title: "Website Development",
       description: "Custom responsive websites with modern technologies and SEO optimization.",
       icon: <LaptopMacIcon />,
-      bgColor: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)'
+      // bgColor: 'linear-gradient(135deg, #6a11cb 0%, #2575fc 100%)'
+            bgColor: 'linear-gradient(135deg, #13f1fc 0%, #0470dc 100%)'
     },
     {
       id: 4,
       title: "UI/UX Design",
       description: "Visually appealing interfaces that enhance user experience and engagement.",
       icon: <BrushIcon />,
-      bgColor: 'linear-gradient(135deg, #ff0844 0%, #ffb199 100%)'
+      bgColor: 'linear-gradient(135deg, #13f1fc 0%, #0470dc 100%)'
     },
     {
       id: 2,
