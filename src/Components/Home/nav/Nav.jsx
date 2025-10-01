@@ -1,14 +1,21 @@
 import { useState, useEffect } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 import './nav.css';
 
 export default function Nav() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isHidden, setIsHidden] = useState(false);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const location = useLocation();
   
   const toggleMenu = () => {
     setMenuOpen(!menuOpen);
+  };
+
+  // دالة للتحقق من الصفحة النشطة
+  const isActive = (path) => {
+    console.log('Current Path:', location.pathname, '| Checking:', path, '| Match:', location.pathname === path);
+    return location.pathname === path;
   };
 
   useEffect(() => {
@@ -44,6 +51,7 @@ export default function Nav() {
       setLastScrollY(currentScrollY);
       updateNavbarColor(currentScrollY);
     };
+    
     const updateNavbarColor = (scrollTop) => {
       const sections = document.querySelectorAll('section');
       const navbarHeight = document.querySelector('.Nav-Cont')?.offsetHeight || 0;
@@ -73,6 +81,7 @@ export default function Nav() {
     };
 
     window.addEventListener('scroll', handleScroll, { passive: true });
+    
     const initializeNavbarColor = () => {
       const sections = document.querySelectorAll('section');
       const navContainer = document.querySelector('.Nav-Cont');
@@ -91,6 +100,7 @@ export default function Nav() {
     window.addEventListener('load', initializeNavbarColor);
     
     initializeNavbarColor();
+    
     return () => {
       window.removeEventListener('scroll', handleScroll);
       window.removeEventListener('load', initializeNavbarColor);
@@ -116,7 +126,7 @@ export default function Nav() {
           <div className={`nav-content ${menuOpen ? 'active' : ''}`}>
             <ul className={`nav-menu ${menuOpen ? 'active' : ''}`}>
               <li className="nav-item dropdown">
-                <Link to="/" className="nav-link  active">
+                <Link to="/" className={`nav-link ${isActive('/') ? 'active' : ''}`}>
                   Home
                   <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5H7z"/>
@@ -124,7 +134,7 @@ export default function Nav() {
                 </Link>
               </li>
               <li className="nav-item dropdown">
-                <Link to="/Service" className="nav-link">
+                <Link to="/Service" className={`nav-link ${isActive('/Service') ? 'active' : ''}`}>
                   Services
                   <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5H7z"/>
@@ -132,10 +142,10 @@ export default function Nav() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/Template" className="nav-link">Templates</Link>
+                <Link to="/Template" className={`nav-link ${isActive('/Template') ? 'active' : ''}`}>Templates</Link>
               </li>
               <li className="nav-item dropdown">
-                <Link to="/AboutUs" className="nav-link">
+                <Link to="/AboutUs" className={`nav-link ${isActive('/AboutUs') ? 'active' : ''}`}>
                   About Us
                   <svg className="dropdown-arrow" width="12" height="12" viewBox="0 0 24 24">
                     <path d="M7 10l5 5 5-5H7z"/>
@@ -143,12 +153,12 @@ export default function Nav() {
                 </Link>
               </li>
               <li className="nav-item">
-                <Link to="/FAQ" className="nav-link">FAQ</Link>
+                <Link to="/FAQ" className={`nav-link ${isActive('/FAQ') ? 'active' : ''}`}>FAQ</Link>
               </li>
               <li className="nav-item">
-                <Link to="/Contact" className="nav-link">Contact Us</Link>
+                <Link to="/Contact" className={`nav-link ${isActive('/Contact') ? 'active' : ''}`}>Contact Us</Link>
               </li>
-              <Link to="/signup" className="signup-btn">Sign up</Link>
+              {/* <Link to="/signup" className="signup-btn">Sign up</Link> */}
             </ul>
           </div>
         </div>

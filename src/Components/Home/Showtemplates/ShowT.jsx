@@ -2,12 +2,13 @@ import { useEffect, useRef } from "react";
 import { Box, Container, Stack, Typography } from "@mui/material";
 import { Star, ArrowForward } from '@mui/icons-material';
 import { motion } from "framer-motion";
+import { useNavigate } from 'react-router-dom';
 
 import "./show.css";
 
 export default function ShowT() {
   const particlesRef = useRef(null);
-
+ const navigate = useNavigate();
   useEffect(() => {
     // Intersection Observer for animations
     const observer = new IntersectionObserver(
@@ -155,13 +156,19 @@ export default function ShowT() {
               "The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!"
             </Typography>
             <motion.button 
-              whileHover={{ scale: 1.05 }}
-              whileTap={{ scale: 0.95 }}
-              className="cta-button"
+             className="cta-button"
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            transition={{ duration: 0.8, delay: 1.2, type: "spring", stiffness: 80, damping: 12 }}
+            whileHover={{ scale: 1.05, transition: { duration: 0.3, ease: "easeOut" } }}
+            whileTap={{ scale: 0.95 }}
+            onClick={() => navigate('/Template')}
             >
               Get Started
               <ArrowForward className="arrow-icon" />
             </motion.button>
+
+
           </motion.div>
 
           <motion.div 
@@ -258,7 +265,7 @@ export default function ShowT() {
                 <Typography variant="body1" className="testimonial-text">
                   The templates are incredibly well-designed and easy to customize. Saved us weeks of development time!
                 </Typography>
-                {/* <Stack 
+                <Stack 
                   direction={{ xs: "column", sm: "row" }} 
                   justifyContent="space-around" 
                   flexWrap="wrap"
@@ -266,7 +273,7 @@ export default function ShowT() {
                 >
                   {[
                     { name: 'Tarek Abdelkarim', title: 'Product Manager' },
-                    { name: 'Sarah', title: 'Product Manager' }
+                    // { name: 'Sarah', title: 'Product Manager' }
                   ].map((author, index) => (
                     <div key={index} className="testimonial-author">
                       <div className="author-avatar"></div>
@@ -276,7 +283,7 @@ export default function ShowT() {
                       </div>
                     </div>
                   ))}
-                </Stack> */}
+                </Stack>
               </div>
             </motion.div>
           </Box>

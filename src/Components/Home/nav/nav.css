@@ -272,12 +272,14 @@
   transition:all .6s cubic-bezier(0.215,0.61,0.355,1)
   }
   
-  .active {
+  /* Active state styling - UPDATED */
+  .nav-link.active {
   color:var(--accent);
-  position:relative
+  position:relative;
+  font-weight:600
   }
   
-  .active::after {
+  .nav-link.active::after {
   content:'';
   position:absolute;
   bottom:18px;
@@ -285,7 +287,8 @@
   width:calc(100% - 32px);
   height:2px;
   background:linear-gradient(90deg,var(--baby-blue),var(--accent));
-  box-shadow:0 0 8px #2bb8d180
+  box-shadow:0 0 8px #2bb8d180;
+  opacity:1
   }
   
   .dropdown-arrow {
@@ -493,6 +496,13 @@
   }
   
   .nav-link:hover::after {
+  width:50%;
+  left:50%;
+  transform:translateX(-50%)
+  }
+  
+  /* Active state for mobile */
+  .nav-link.active::after {
   width:50%;
   left:50%;
   transform:translateX(-50%)
