@@ -3,5 +3,8 @@ import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
-  base: '/', // مهم جداً، root path عشان Vercel
+  base: '/', // root path
+  build: {
+    outDir: 'dist',
+  },
 });

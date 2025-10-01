@@ -7,10 +7,11 @@ import FormDataReceiver from "./Components/form data/Formdata";
 import AboutUs from "./Components/About/AboutUS";
 import Privacy from "./Components/Policy/Privacy";
 import HomePreview from './Components/HomePreview/HomePreview';
+import NotFound from './Components/NotFound/NotFound';
 
 function App() {
   return (
-    <Router basename="/"> {/* خليها root path */}
+    <Router>
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/Service" element={<ServicesPage />} />
@@ -20,6 +21,7 @@ function App() {
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/Formdata" element={<FormDataReceiver />} />
         <Route path="/HomePreview" element={<HomePreview />} />
+         <Route path="*" element={<NotFound />} /> {/* ← هنا صفحة 404 */}
       </Routes>
     </Router>
   );
