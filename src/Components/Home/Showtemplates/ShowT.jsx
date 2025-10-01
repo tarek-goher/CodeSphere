@@ -222,7 +222,7 @@ export default function ShowT() {
                     {type === 'support' ? '24/7' : '50+'}
                   </Typography>
                   <Typography className="stat-label" variant="p">
-                    {type === 'templates' ? 'Templates Available' : 
+                    {type === 'templates' ? 'Completed Projects' : 
                      type === 'customers' ? 'Happy Customers' : 'Support Available'}
                   </Typography>
                 </motion.div>

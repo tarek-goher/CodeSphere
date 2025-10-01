@@ -66,12 +66,13 @@ const Footer = () => {
   );
 
   // Social icons with custom styling for no spacing
-  const socialIcons = [
-    { icon: <Facebook />, color: '#', label: 'facebook', link: 'https://www.facebook.com/profile.php?id=100064817331076' },
-    { icon: <Instagram />, color: '#', label: 'instagram', link: 'https://www.instagram.com'},
-    { icon: <WhatsApp />, color: '#', label: 'whatsapp', link: 'https://wa.me/yourphonenumber'},
-    { icon: <Email />, color: '#', label: 'email', link: 'mailto:digitalapplica@gmail.com' }, 
-  ];
+const socialIcons = [
+  { icon: <Facebook />, color: '#', label: 'facebook', link: 'https://www.facebook.com/profile.php?id=100064817331076' },
+  // { icon: <Instagram />, color: '#', label: 'instagram', link: 'https://www.instagram.com'},
+  { icon: <WhatsApp />, color: '#', label: 'whatsapp', link: 'https://wa.me/yourphonenumber'},
+  { icon: <Email />, color: '#', label: 'email', link: 'mailto:digitalapplica@gmail.com' }, 
+];
+
 
   return (
     <Box sx={{ 
@@ -117,9 +118,14 @@ const Footer = () => {
                     }
                   }}
                 >
-                  <Link href={item.link} target="_blank" rel="noopener noreferrer">
-                    {item.icon}
-                  </Link>
+                <Link 
+    href={item.link} 
+    target="_blank" 
+    rel="noopener noreferrer"
+    sx={{ display: 'flex', alignItems: 'center', justifyContent: 'center', width: '100%', height: '100%' }}
+  >
+    {item.icon}
+  </Link>
                 </Box>
               ))}
             </Box>
@@ -185,7 +191,7 @@ const Footer = () => {
               <Box sx={{ display: 'flex', mb: 1 }}>
                 <LocationOn sx={{ mr: 1, fontSize: 20, color: '#2196F3' }} />
                 <Typography variant="body2" sx={{ color: '#adb5bd' }}>
-                  New Cairo
+                  New Egypt
                 </Typography>
               </Box>
               <Box sx={{ display: 'flex', mb: 1 }}>

@@ -672,9 +672,9 @@ const AboutUs = () => {
               { number: "50+", label: "Completed Projects" },
               { number: "95%", label: "Client Satisfaction" },
               { number: "10+", label: "Expert Team Members" },
-              { number: "12+", label: "Industry Awards" }
+              // { number: "12+", label: "Industry Awards" }
             ].map((stat, index) => (
-              <Grid item xs={6} md={3} key={index}>
+              <Grid item xs={6} md={4} key={index}>
                 <MotionBox 
                   variants={fadeIn}
                   sx={{ 
