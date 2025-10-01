@@ -1,5 +1,5 @@
 import React from 'react';
-import image from '../../../Assets/image.png';
+import image from '../../../assets/image.png';
 
 const FixedImageComponent = () => {
   return (
