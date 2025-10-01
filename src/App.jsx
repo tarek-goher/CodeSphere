@@ -7,7 +7,7 @@ import FormData_Receiver from "./Components/form data/Formdata";
 import AboutUs from "./Components/About/AboutUS";
 import Privacy from "./Components/Policy/Privacy";
 import HomePreview from './Components/HomePreview/HomePreview';
-import NotFound from "./NotFound"
+import NotFound from "./Components/NotFound/NotFound";
 
 
 function App() {
@@ -22,7 +22,7 @@ function App() {
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/Formdata" element={<FormData_Receiver />} />
         <Route path="/HomePreview" element={<HomePreview />} />
-        <Route path="*" element={<NotFound />} /> {/* ← صفحة 404 */}
+        <Route path="*" element={<NotFound />} /> 
       </Routes>
     </Router>
   );
