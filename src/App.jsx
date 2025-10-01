@@ -13,7 +13,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="*" element={<Home />} />
+        <Route path="/" element={<Home />} />
         <Route path="/Service" element={<ServicesPage />} />
         <Route path="/Contact" element={<ContactPage />} />
         <Route path="/AboutUs" element={<AboutUs />} />
@@ -21,7 +21,7 @@ function App() {
         <Route path="/Privacy" element={<Privacy />} />
         <Route path="/Formdata" element={<FormDataReceiver />} />
         <Route path="/HomePreview" element={<HomePreview />} />
-         <Route path="*" element={<NotFound />} /> {/* ← هنا صفحة 404 */}
+        <Route path="*" element={<NotFound />} /> {/* ← صفحة 404 */}
       </Routes>
     </Router>
   );
