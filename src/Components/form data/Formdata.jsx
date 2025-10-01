@@ -101,7 +101,7 @@ const theme = createTheme({
   },
 });
 
-const FormDataReceiver = () => {
+const FormData_Receiver = () => {
   const [projects, setProjects] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -619,4 +619,4 @@ const FormDataReceiver = () => {
   );
 };
 
-export default FormDataReceiver;
+export default FormData_Receiver;
