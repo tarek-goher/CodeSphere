@@ -10,7 +10,7 @@ import HomePreview from './Components/HomePreview/HomePreview';
 
 function App() {
   return (
-    <Router basename={process.env.GITHUB_PAGES ? "/CodeSphere" : "/"}>
+    <Router basename="/"> {/* خليها root path */}
       <Routes>
         <Route path="*" element={<Home />} />
         <Route path="/Service" element={<ServicesPage />} />

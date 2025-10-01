@@ -3,5 +3,5 @@ import react from '@vitejs/plugin-react-swc';
 
 export default defineConfig({
   plugins: [react()],
-  base: process.env.GITHUB_PAGES ? '/CodeSphere/' : '/', // Base path ديناميكي
+  base: '/', // مهم جداً، root path عشان Vercel
 });
