@@ -1,131 +1,6 @@
-/* Video Section Styles */
-.video-section {
-  height: 100vh !important;
-  background-color: #111827;
-  overflow: hidden;
-}
-
-.video-container {
-  position: sticky;
-  top: 0;
-  padding: 0; /* تم تغييره من 2rem إلى 0 */
-  transition: all 0.3s ease;
-}
-
-.video-wrapper {
-  margin: 0; /* تم تغييره من 0 auto إلى 0 */
-  width: 100%; /* تم إضافة عرض كامل */
-  transition: all 0.3s ease-out;
-}
-
-.video-inner {
-  position: relative;
-  overflow: hidden;
-  border-radius: 0; /* تم تغييره من 10px إلى 0 لإزالة الحواف المنحنية */
-  box-shadow: none; /* تم إزالة الظل */
-  width: 100vw; /* عرض كامل للشاشة */
-  height: 100vh; /* ارتفاع كامل للشاشة */
-}
-
-.main-video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover; /* تم إضافة هذا لتغطية المساحة بالكامل */
-}
-
-/* Video Overlay */
-.video-overlay {
-  position: absolute;
-  inset: 0;
-  background: linear-gradient(to top, rgba(0, 0, 0, 0.7), transparent, transparent);
-  pointer-events: none;
-}
-
-.video-content {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  padding: 2rem 3rem;
-  color: white;
-}
-
-.video-title {
-  font-size: 3rem;
-  font-weight: bold;
-  margin-bottom: 0.75rem;
-}
-
-.video-description {
-  font-size: 1.25rem;
-  opacity: 0.9;
-}
-
-/* Content Sections */
-.content-wrapper {
-  position: relative;
-  z-index: 10;
-  background-color: #111827;
-  padding: 0 2rem 4rem;
-}
-
-.content-container {
-  max-width: 56rem;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-  gap: 2rem;
-}
-
-.content-card {
-  background-color: #1f2937;
-  border-radius: 10px;
-  padding: 2rem;
-  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.3);
-}
-
-.content-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  color: white;
-}
-
-.content-text {
-  color: #d1d5db;
-  line-height: 1.75;
-}
-
-/* Responsive Design */
-@media (max-width: 768px) {
-  .video-content {
-    padding: 1.5rem;
-  }
-  
-  .video-title {
-    font-size: 2rem;
-  }
-  
-  .video-description {
-    font-size: 1rem;
-  }
-  
-  .content-wrapper {
-    padding: 0 1rem 3rem;
-  }
-  
-  .content-card {
-    padding: 1.5rem;
-  }
-}
-
-/* Smooth Transitions */
-* {
-  box-sizing: border-box;
-}
 
 body {
+
   margin: 0;
   padding: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -133,4 +8,24 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+@media (max-width: 768px) {
+  .editImage{
+    height: 30vh !important;
+    width: 100% !important;
+  }
+  .images {
+    height: 30vh !important;
+    overflow: hidden !important;
+    background-size: cover;
+    background-position: center;
+  }
+}
+@media (max-width: 768px) {
+  .images img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+  }
 }
