@@ -118,25 +118,25 @@ const FAQPage = () => {
         },
       ]
     },
-    // {
-    //   title: 'Desktop Applications',
-    //   icon: <DevicesIcon fontSize="large" />,
-    //   color: '#4caf50',
-    //   faqs: [
-    //     {
-    //       question: 'What platforms do your desktop applications support?',
-    //       answer: 'We develop desktop applications for Windows, macOS, and Linux. We can create platform-specific applications or cross-platform solutions using technologies like Electron or .NET MAUI depending on your requirements.'
-    //     },
-    //     {
-    //       question: 'How do you handle updates for desktop applications?',
-    //       answer: 'We implement automatic update systems that securely deliver updates to users. Our solutions include features like background downloads, version management, and rollback capabilities to ensure a smooth user experience.'
-    //     },
-    //     {
-    //       question: 'Can you integrate with existing systems?',
-    //       answer: 'Yes, our desktop applications can integrate with existing databases, APIs, and business systems. We design robust integration solutions that ensure reliable data exchange and synchronization across your entire technology stack.'
-    //     }
-    //   ]
-    // },
+    {
+      title: 'Desktop Applications',
+      icon: <DevicesIcon fontSize="large" />,
+      color: '#4caf50',
+      faqs: [
+        {
+          question: 'What platforms do your desktop applications support?',
+          answer: 'We develop desktop applications for Windows, macOS, and Linux. We can create platform-specific applications or cross-platform solutions using technologies like Electron or .NET MAUI depending on your requirements.'
+        },
+        {
+          question: 'How do you handle updates for desktop applications?',
+          answer: 'We implement automatic update systems that securely deliver updates to users. Our solutions include features like background downloads, version management, and rollback capabilities to ensure a smooth user experience.'
+        },
+        {
+          question: 'Can you integrate with existing systems?',
+          answer: 'Yes, our desktop applications can integrate with existing databases, APIs, and business systems. We design robust integration solutions that ensure reliable data exchange and synchronization across your entire technology stack.'
+        }
+      ]
+    },
     {
       title: 'UI/UX Design',
       icon: <CodeIcon fontSize="large" />,
@@ -204,9 +204,9 @@ const FAQPage = () => {
       </Box>
 
       {/* استخدام Grid عادي مع تعيين ارتفاع ثابت للورقة Paper */}
-      <Grid container spacing={6}>
+      <Grid container spacing={6}  >
         {categories.map((category, categoryIndex) => (
-          <Grid item xs={12} md={4} key={categoryIndex}>
+          <Grid item xs={12} md={4}  key={categoryIndex}>
             <MotionBox
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
@@ -216,7 +216,7 @@ const FAQPage = () => {
                 elevation={3} 
                 ref={el => cardsRef.current[categoryIndex] = el}
                 sx={{ 
-                  overflow: '',
+                  overflowY: 'scroll',
                   borderTop: `4px solid ${category.color}`,
                   borderRadius: '8px',
                   // تعيين ارتفاع ثابت إذا كان الارتفاع المحدد موجوداً وأكبر من صفر
