@@ -42,7 +42,7 @@ const ContactPage = () => {
   const isMobile = useMediaQuery(theme.breakpoints.down('md'));
   
   // Formspree integration - make sure the form ID is correct
-  const [state, handleSubmit] = useForm("xeoajryr");
+  const [state, handleSubmit] = useForm("xlgpqaev");
   
   // Form state for controlled inputs
   const [formData, setFormData] = useState({
@@ -148,7 +148,7 @@ const ContactPage = () => {
       details: [
         // إضافة رابط البريد الإلكتروني مع mailto
         <Link 
-          href="mailto:digitalapplica@gmail.com" 
+          href="mailto:csphere28@gmail.com" 
           underline="hover" 
           key="email-link"
           sx={{ 
@@ -158,7 +158,7 @@ const ContactPage = () => {
             '&:hover': { color: theme.palette.secondary.main }
           }}
         >
-          digitalapplica@gmail.com
+          csphere28@gmail.com
         </Link>
       ],
       color: theme.palette.secondary.main
