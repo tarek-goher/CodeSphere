@@ -1,0 +1,294 @@
+/* ===================================================
+   PRIVACY PAGE — matches CodeSphere design system
+   Colors: --primary #2250f4 | --accent #00ad9f | --baby-blue #2bb8d1
+   Dark bg: #030b26
+   =================================================== */
+
+/* ── Page wrapper ── */
+.prv-page {
+  background-color: #f8f8f8;
+  min-height: 100vh;
+}
+
+/* ── Hero ── */
+.prv-hero {
+  position: relative;
+  background: linear-gradient(135deg, #2250f4 0%, #000000 60%, #1d4b47 100%);
+  overflow: hidden;
+  padding: 7rem 2rem 3rem;
+  text-align: center;
+}
+
+.prv-hero-bg {
+  position: absolute;
+  inset: 0;
+  background: radial-gradient(circle at 20% 50%, rgba(255,255,255,0.08) 0%, transparent 50%),
+              radial-gradient(circle at 80% 20%, rgba(0,173,159,0.2) 0%, transparent 40%);
+  pointer-events: none;
+}
+
+.prv-hero-dots {
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(circle, rgba(255,255,255,0.15) 1px, transparent 1px);
+  background-size: 22px 22px;
+  pointer-events: none;
+  opacity: 0.6;
+}
+
+.prv-hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 860px;
+  margin: 0 auto;
+}
+
+.prv-badge {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  border: 1px solid rgba(255,255,255,0.4);
+  color: #fff;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 2.5px;
+  text-transform: uppercase;
+  padding: 0.35rem 1.1rem;
+  border-radius: 100px;
+  margin-bottom: 1.2rem;
+}
+
+.prv-hero-title {
+  font-size: clamp(2rem, 5vw, 3.4rem);
+  font-weight: 800;
+  color: #fff;
+  margin-bottom: 1rem;
+  line-height: 1.15;
+}
+
+.prv-hero-sub {
+  font-size: 1.05rem;
+  color: rgba(255,255,255,0.85);
+  max-width: 600px;
+  margin: 0 auto 2rem;
+  line-height: 1.7;
+}
+
+/* Language toggle */
+.prv-lang-toggle {
+  display: inline-flex;
+  background: rgba(255,255,255,0.15);
+  border: 1px solid rgba(255,255,255,0.3);
+  border-radius: 12px;
+  padding: 4px;
+  margin-bottom: 2rem;
+  gap: 4px;
+}
+
+.prv-lang-btn {
+  background: transparent;
+  border: none;
+  color: rgba(255,255,255,0.8);
+  font-size: 0.9rem;
+  font-weight: 600;
+  padding: 0.5rem 1.4rem;
+  border-radius: 9px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.prv-lang-btn.active {
+  background: rgba(255,255,255,0.95);
+  color: #2250f4;
+}
+
+.prv-lang-btn:not(.active):hover {
+  background: rgba(255,255,255,0.2);
+  color: #fff;
+}
+
+/* Section pills */
+.prv-pills {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0 1rem;
+}
+
+.prv-pill {
+  background: transparent;
+  border: 1px solid rgba(255,255,255,0.35);
+  color: rgba(255,255,255,0.85);
+  font-size: 0.8rem;
+  font-weight: 500;
+  padding: 0.4rem 1rem;
+  border-radius: 100px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.prv-pill:hover,
+.prv-pill.active {
+  background: rgba(255,255,255,0.22);
+  border-color: rgba(255,255,255,0.7);
+  color: #fff;
+}
+
+/* ── Body layout ── */
+.prv-body {
+  display: flex;
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 3rem 2rem 5rem;
+  gap: 2.5rem;
+  align-items: flex-start;
+}
+
+/* ── Sidebar ── */
+.prv-sidebar {
+  width: 260px;
+  flex-shrink: 0;
+  position: sticky;
+  top: 100px;
+}
+
+.prv-toc {
+  background: #fff;
+  border-radius: 16px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 24px rgba(34,80,244,0.08);
+  border: 1px solid rgba(34,80,244,0.08);
+}
+
+.prv-toc-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #2250f4;
+  margin-bottom: 1rem;
+}
+
+.prv-toc-item {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  width: 100%;
+  background: transparent;
+  border: none;
+  text-align: start;
+  font-size: 0.88rem;
+  color: #555;
+  padding: 0.55rem 0.7rem;
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.25s ease;
+  margin-bottom: 2px;
+  line-height: 1.4;
+}
+
+.prv-toc-item:hover {
+  background: rgba(34,80,244,0.06);
+  color: #2250f4;
+}
+
+.prv-toc-item.active {
+  background: linear-gradient(90deg, rgba(34,80,244,0.1), rgba(0,173,159,0.08));
+  color: #2250f4;
+  font-weight: 600;
+}
+
+.prv-toc-icon {
+  font-size: 1rem;
+  flex-shrink: 0;
+}
+
+/* ── Main content ── */
+.prv-main {
+  flex: 1;
+  min-width: 0;
+}
+
+/* Section card */
+.prv-section {
+  background: #fff;
+  border-radius: 18px;
+  padding: 2rem 2.2rem;
+  margin-bottom: 1.5rem;
+  box-shadow: 0 2px 16px rgba(34,80,244,0.06);
+  border: 1px solid rgba(34,80,244,0.07);
+  animation: fadeSlideUp 0.5s ease both;
+  scroll-margin-top: 120px;
+}
+
+@keyframes fadeSlideUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+.prv-section-header {
+  display: flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-bottom: 0.8rem;
+}
+
+.prv-section-icon {
+  font-size: 1.6rem;
+  line-height: 1;
+}
+
+.prv-section-title {
+  font-size: 1.25rem;
+  font-weight: 700;
+  color: #181A1C;
+  margin: 0;
+}
+
+.prv-section-divider {
+  height: 3px;
+  width: 60px;
+  background: linear-gradient(90deg, #2250f4, #00ad9f);
+  border-radius: 4px;
+  margin-bottom: 1.1rem;
+}
+
+.prv-section-body {
+  font-size: 0.97rem;
+  color: #444;
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* Footer note */
+.prv-footer-note {
+  text-align: center;
+  padding: 2rem 0 0;
+  color: #999;
+  font-size: 0.85rem;
+  line-height: 1.8;
+}
+
+/* ── RTL adjustments ── */
+[dir='rtl'] .prv-toc-item {
+  text-align: right;
+}
+
+[dir='rtl'] .prv-section-divider {
+  background: linear-gradient(270deg, #2250f4, #00ad9f);
+}
+
+/* ── Responsive ── */
+@media (max-width: 900px) {
+  .prv-sidebar { display: none; }
+  .prv-body { padding: 2rem 1rem 4rem; }
+}
+
+@media (max-width: 600px) {
+  .prv-hero { padding: 6rem 1.2rem 2.5rem; }
+  .prv-section { padding: 1.5rem 1.3rem; }
+  .prv-hero-title { font-size: 1.9rem; }
+  .prv-pills { gap: 0.35rem; }
+  .prv-pill { font-size: 0.75rem; padding: 0.35rem 0.8rem; }
+}
