@@ -7,7 +7,7 @@ import AboutUs from "./Components/About/AboutUS";
 import Privacy from "./Components/Policy/Privacy";
 import FAQPage from './Components/FAQ/FAQ';
 import NotFound from "./Components/NotFound/NotFound";
-import Projects from "./Components/showprojects/Projects";
+import Projects from "./Components/showprojects/projects";
 
 function App() {
   return (
