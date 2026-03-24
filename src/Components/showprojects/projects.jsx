@@ -5,10 +5,11 @@ import Footer from "../Home/Footer/Footer";
 import "./projects.css";
 
 const projects = [
-  { href: "https://tarek-goher.github.io/grouping/e-com/index.html",       title: "E-Commerce",       desc: "Full-featured online store experience"       },
+ 
   { href: "https://tarek-goher.github.io/grouping/egy/index.html",          title: "Ancient Egypt",    desc: "Historical journey through pharaonic era"   },
   { href: "https://tarek-goher.github.io/grouping/markting/index.html",     title: "Marketing Agency", desc: "Modern agency landing presence"              },
   { href: "https://tarek-goher.github.io/grouping/s_cars/index.html",       title: "Sports Cars",      desc: "High-performance automotive showcase"        },
+   { href: "https://tarek-goher.github.io/grouping/e-com/index.html",       title: "E-Commerce",       desc: "Full-featured online store experience"       },
   { href: "https://tarek-goher.github.io/grouping/restaurant/index.html",   title: "Restaurant Landing",desc: "Elegant food & dining experience"           },
   { href: "https://tarek-goher.github.io/grouping/web_ai/index.html",       title: "Tech Conference",  desc: "AI & technology event platform"              },
   { href: "https://tarek-goher.github.io/grouping/swift/index.html",        title: "Swift Delivery",   desc: "Fast logistics & delivery service"           },
